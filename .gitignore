@@ -6,17 +6,6 @@
 # Packages
 *.egg
 *.egg-info
-dist
-build
-eggs
-parts
-bin
-var
-sdist
-develop-eggs
-.installed.cfg
-lib
-lib64
 
 # Installer logs
 pip-log.txt
@@ -33,17 +22,10 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
-/ve/
 logs/*.log
 *.pid
 node_modules/
-/testapp/
-docs/_build/
-/static/
-/media/
-db.sqlite3
 .cache
 .DS_Store
 /htmlcov/
 .idea/
-molo/core/migrations/*
