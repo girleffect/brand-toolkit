@@ -1,0 +1,137 @@
+.btn_girlEffect {
+  display: block;
+  font-size: 18px;
+  -webkit-transition: all 0s ease;
+  -moz-transition: all 0s ease;
+  -ms-transition: all 0s ease;
+  -o-transition: all 0s ease;
+  transition: all 0s ease;
+  background: transparent;
+  border: none;
+  &:hover {
+    text-decoration: none;
+    -webkit-transition: all 0s ease;
+    -moz-transition: all 0s ease;
+    -ms-transition: all 0s ease;
+    -o-transition: all 0s ease;
+    transition: all 0s ease;
+  }
+}
+
+.btn_girlEffect__border {
+  width: 155px;
+  padding: 3%;
+  border: 2px solid #536bbf;
+  text-align: center;
+  &:hover {
+    background: @brandButton;
+    color: #fff;
+  }
+}
+
+.btn_girlEffect__underline {
+  float: left;
+  padding: 10px 0;
+  border-bottom: 2px solid @brandButton;
+  &:hover {
+    color: @brandButton !important;
+    border-bottom: 1px solid @brandButton;
+
+  }
+
+}
+
+.btn_girlEffect__toolkit_just_center {
+  text-align: left;
+  float: none;
+  display: block;
+  font-size: 16px;
+  bottom: 15%;
+}
+
+.btn_girlEffect__toolkit_center {
+
+  display: table;
+  float: none;
+  text-align: center;
+  font-size: 24px;
+  font-family: @circularStd-medium;
+}
+
+.btn_girlEffect__toolkit_right {
+  float: right;
+}
+
+.btn_girlEffect__toolkit_download {
+  font-size: 14px;
+  //margin: 0 15px;
+  font-family: @circularStd-medium;
+  &:before {
+    content: "";
+    display: block;
+    width: 19px;
+    height: 21px;
+    background: url('../../img/adobe.png') no-repeat;
+    float: left;
+    margin-right: 10px;
+
+  }
+
+}
+
+.word {
+  &:before {
+    background: url('../../img/wordDl.png') no-repeat;
+    width: 15px;
+    height: 15px;
+  }
+  &:hover {
+    text-align: center;
+  }
+ }
+.ppt {
+  &:before {
+    background: url('../../img/pp-icon.png') no-repeat;
+    width: 20px;
+    height: 20px;
+  }
+}
+.video {
+  &:before {
+    background: url('../../img/video-icon.png') no-repeat;
+    width: 20px;
+    height: 20px;
+  }
+}
+.xls {
+  &:before {
+    background: url('../../img/Excel-icon.png') no-repeat;
+    width: 20px;
+    height: 20px;
+  }
+}
+.indd {
+  &:before {
+    background: url('../../img/inddDl.png') no-repeat;
+    width: 21px;
+    height: 19px;
+  }
+  &:hover {
+    text-align: center;
+  }
+}
+
+.btn-girlEffect__toolkit_hover {
+
+  border-top: 2px solid transparent;
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  padding-left: 15px;
+  padding-right: 15px;
+  &:hover {
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 2px solid @brandButton;
+
+  }
+}
