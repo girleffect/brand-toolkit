@@ -1,0 +1,33 @@
+sudo: false
+language: python
+python: '3.6'
+
+env:
+  global:
+    - REGISTRY_USER=geautomation
+    - secure: "V1EPjdjXVsmTqjFiZ7cpybipO65EvkOfiIuwEaL87ITOJTePYqJgw2cs9Y+Xb4jEJvzddHIC4HDTBBno+wVsLtQMUCLa2KiPF5Str3BN9T2Elc0MYdiuiTcqjOzIznmKAjwUUrcdMhH9iPbIK4zIRX+bXtmF2r/yA/d04rd9UBrjlT/Ep36/h7S6deaN4DYq5xt5cNzGrJyrvbqkrqBcvV67/YBJSdmOE9VtBsZhP7yYc0PMNbzYNusEm11BSic4eUV8CTBZ+vZx+E+/CZRgfqMtDcOvvC8ohI/hDELzM0zxcl/mVxFHnfTOLWy9KGx6bZVPp2OtdfutyrHRXLCTwjsfQuu1VLomo3FVChaDL/BiD2dZfT+IPud2gJuaedSH8LogeAZ7iqQLHZHGfShvjI7dC4nBDB68uLA+wiGaN7x6Juqf4izc+n/TiRt6wJu5uu5vojmepi6PGsECL53CTdyOTKvGayNIHCDbSfQW8QjJdXnx9WKBvG9nKMcY6KHI0WEazXu3eTWMzLUWXOqieEWQmTw0wJOztRNcWmz0TuZtZgD9WCkUsWXvlHpuzDQtJeIRUAg+8AJzTMU+VQjdYt9ncc6nSZbQHxm7evrXVw5q7LJP0RvwCaOJrZPzSLssyxq2P/c5dPF//kWIzBVcjgc7kzUP00SegYa2TV8H3RM="
+
+jobs:
+  include:
+    - stage: build
+      sudo: required
+      services:
+        - docker
+      before_script:
+        - COMMIT_TAG=${TRAVIS_COMMIT::7}
+        - TAG=${TRAVIS_BRANCH}_$COMMIT_TAG
+        - image="girleffect/brand-toolkit"
+        # Fetch existing image to use as cache
+        - docker pull "$image" || true
+      script:
+        - docker build --pull --cache-from "$image" --tag "$image" .
+      after_script:
+        - docker images
+      before_deploy:
+        - pip install docker-ci-deploy==0.3.0
+        - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+      deploy:
+        - provider: script
+          script: dcd --tag $TAG --tag latest -- "$image"
+          on:
+            branch: master
